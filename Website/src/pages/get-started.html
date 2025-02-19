@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Started - PixiJS</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/get-started.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-gamepad"></i> PixiJS Games
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="showcase.html">Showcase</a>
+          <a href="community.html">Community</a>
+          <a href="resources.html">Resources</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="get-started">
+      <div class="auth-container">
+        <!-- Login Form -->
+        <div class="auth-form" id="login-form">
+          <h2>Welcome Back!</h2>
+          <form id="login">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+          <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="auth-form" id="signup-form" style="display: none">
+          <h2>Create Your Account</h2>
+          <form id="signup">
+            <div class="form-group">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input type="password" id="signup-password" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </form>
+          <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+        </div>
+      </div>
+    </section>
+
+    <script src="../js/get-started.js"></script>
+  </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Feed - PixiJS</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/fyp.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="fyp-navbar">
+      <div class="fyp-nav-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-gamepad"></i> PixiJS Games
+        </a>
+        <div class="fyp-nav-links">
+          <a href="../index.html"><i class="fas fa-home"></i></a>
+          <a href="explore.html"><i class="fas fa-compass"></i></a>
+          <a href="fyp.html"><i class="fas fa-heart"></i></a>
+          <a href="profile.html"><i class="fas fa-user"></i></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="fyp-container">
+      <!-- Left Side Panel -->
+      <aside class="fyp-left-panel">
+        <!-- Quick Links -->
+        <div class="side-quick-links">
+          <h3>Quick Links</h3>
+          <a href="resources.html" class="quick-link">
+            <i class="fas fa-book"></i> Resources
+          </a>
+          <a href="community.html" class="quick-link">
+            <i class="fas fa-users"></i> Community
+          </a>
+          <a href="showcase.html" class="quick-link">
+            <i class="fas fa-star"></i> Showcase
+          </a>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="side-activity">
+          <h3>Recent Activity</h3>
+          <div class="activity-item">
+            <i class="fas fa-heart"></i>
+            <span>JaneSmith liked your post</span>
+          </div>
+          <div class="activity-item">
+            <i class="fas fa-comment"></i>
+            <span>AlexBrown commented on your game</span>
+          </div>
+        </div>
+
+        <!-- Game Development Tips -->
+        <div class="side-tips">
+          <h3>Game Dev Tips</h3>
+          <div class="tip">
+            <i class="fas fa-lightbulb"></i>
+            <span>Use PixiJS filters for stunning visual effects!</span>
+          </div>
+          <div class="tip">
+            <i class="fas fa-lightbulb"></i>
+            <span>Optimize your game for mobile devices.</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Feed Section -->
+      <section class="fyp-feed" id="fyp-feed">
+        <!-- Posts will be dynamically loaded here -->
+      </section>
+
+      <!-- Right Side Panel -->
+      <aside class="fyp-side-panel">
+        <!-- User Profile -->
+        <div class="side-profile">
+          <img
+            src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+            alt="User Avatar"
+            class="side-avatar"
+          />
+          <div class="side-profile-info">
+            <span class="side-username">JohnDoe</span>
+            <span class="side-name">John Doe</span>
+          </div>
+          <a href="#" class="side-switch">Switch</a>
+        </div>
+
+        <!-- Trending Games -->
+        <div class="side-trending">
+          <h3>Trending Games</h3>
+          <div class="trending-game">
+            <img
+              src="https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg"
+              alt="Game Image"
+              class="trending-image"
+            />
+            <div class="trending-info">
+              <span class="trending-title">Space Shooter</span>
+              <span class="trending-category">Action</span>
+            </div>
+          </div>
+          <div class="trending-game">
+            <img
+              src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg"
+              alt="Game Image"
+              class="trending-image"
+            />
+            <div class="trending-info">
+              <span class="trending-title">Platform Adventure</span>
+              <span class="trending-category">Adventure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Popular Developers -->
+        <div class="side-developers">
+          <h3>Popular Developers</h3>
+          <div class="developer">
+            <img
+              src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+              alt="Developer Avatar"
+              class="developer-avatar"
+            />
+            <div class="developer-info">
+              <span class="developer-name">JaneSmith</span>
+              <span class="developer-bio">Indie Game Developer</span>
+            </div>
+            <a href="#" class="developer-follow">Follow</a>
+          </div>
+          <div class="developer">
+            <img
+              src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg"
+              alt="Developer Avatar"
+              class="developer-avatar"
+            />
+            <div class="developer-info">
+              <span class="developer-name">AlexBrown</span>
+              <span class="developer-bio">Puzzle Game Creator</span>
+            </div>
+            <a href="#" class="developer-follow">Follow</a>
+          </div>
+        </div>
+
+        <!-- News Section -->
+        <div class="side-news">
+          <h3>Latest News</h3>
+          <div class="news-item">
+            <span class="news-title">PixiJS 7.0 Released!</span>
+            <span class="news-date">2 days ago</span>
+          </div>
+          <div class="news-item">
+            <span class="news-title">Game Jam Winners Announced</span>
+            <span class="news-date">5 days ago</span>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="side-footer">
+          <a href="#">About</a>
+          <a href="#">Help</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </aside>
+    </div>
+
+    <script src="../js/fyp.js"></script>
+  </body>
+</html>

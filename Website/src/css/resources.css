@@ -1,0 +1,105 @@
+.resources {
+  padding: 6rem 2rem;
+  background: white;
+}
+
+.resources-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.resource-card {
+  background: var(--light-color);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+.resource-card .image-container {
+  height: 200px; /* Adjust as needed */
+}
+
+.resource-card h3 {
+  margin: 1rem 0 0.5rem;
+  padding: 0 1rem;
+}
+
+.resource-card p {
+  padding: 0 1rem 1rem;
+}
+
+.resource-card .btn {
+  margin: 0 1rem 1rem;
+  display: block;
+  text-align: center;
+}
+
+.resource-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.resource-category {
+  margin-top: 4rem;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.resource-list {
+  list-style: none;
+}
+
+.resource-item {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: white;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.resource-item:hover {
+  transform: translateX(10px);
+  box-shadow: var(--shadow);
+}
+
+.resource-link {
+  color: var(--dark-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resource-link i {
+  color: var(--primary-color);
+}
+
+.download-btn {
+  background: var(--gradient);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}

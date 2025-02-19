@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 3 | Visual Libraries | PixiJS</title>
+  </head>
+  <body>
+    <game id="game"></game>
+    <!-- Load in the PixiJS -->
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <!-- Our ES6 code goes here as a type="module" -->
+    <script type="module">
+      // We first need to create a new PixiJS application instance
+      const app = new PIXI.Application();
+      // Now we need to call an asyncronous method on our PixiJS
+      // application called "init" which initializes our display
+      // using a defined width and height measured in pixels.
+      await app.init({
+        backgroundColor: "#3398b9",
+        width: 800,
+        height: 800,
+      });
+      // Now all we need to do is to tell PixiJS what HTMLElement
+      // in our DOM we want to show our game using a DOM helper
+      document.getElementById("game").appendChild(app.canvas);
+      // First lets create ourselves a new graphic instance to
+      // represent our "cirlce" on the screen and assign it to
+      // a variable called "circle"
+      const circle = new PIXI.Graphics();
+      // Now we can set it's "fill" color to a nice fun yellow!
+      circle.beginFill("#f5ef42");
+      // Now we need to tell Pixi to draw an actual circle
+      // the three arguments we need are: X, Y, and radius size
+      // all measured in pixels. So this cirlce will start at
+      // zero X and zero Y coordinates with a 5 pixel radius
+      circle.drawCircle(5, 5, 5);
+      // Now we need to call an end to our "fill" that we started
+      // earlier with our "beginFill" call with the "endFill" call
+      circle.endFill();
+      // Now we need to tell our circle where to "spawn" on our
+      // game display by setting it's "view" x and y coordinates
+      circle.x = 450;
+      circle.y = 400;
+      // This will determine our circle's "velocity" and direction
+      let xv = 1;
+      let yv = 1;
+
+      // Now finally!!! Let's add our cirlce to our game stage
+      // to see what happens using the addChild call
+      app.stage.addChild(circle);
+      // Now what we need to do is to add a refresh engine that
+      // powers our graphic's movement. We can use Pixi's built
+      // in "ticker" feature like so...
+      app.ticker.add(() => {
+        // All of the following code will be executed on every
+        // "frame" update/refresh
+        // If our circle exceeds 800px or is less than zero
+        if (circle.x >= 800 || circle.x <= 0) {
+          // This will flip a postitive number to a negative
+          // as well as a negative to a positive due to the
+          // "math of signs" property in mathematics which
+          // states two negatives equals a positive
+          xv = -xv;
+        }
+
+        // Rinse and repeat for our Y axis
+        if (circle.y >= 800 || circle.y <= 0) {
+          yv = -yv;
+        }
+        // Lets move our circle's by their direction/velocity
+        circle.x += xv;
+        circle.y += yv;
+      });
+    </script>
+  </body>
+</html>

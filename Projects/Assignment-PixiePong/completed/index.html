@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 3 | Visual Libraries | PixiJS</title>
+  </head>
+  <body>
+    <game id="game"></game>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type="module">
+      const app = new PIXI.Application();
+      await app.init({
+        backgroundColor: "#3398b9",
+        width: 800,
+        height: 800,
+      });
+      document.getElementById("game").appendChild(app.canvas);
+
+      const borders = {
+        top: createBorder(0, 0, 800, 10, "#ff0000"),
+        right: createBorder(790, 0, 10, 800, "#ff0000"),
+        bottom: createBorder(0, 790, 800, 10, "#ff0000"),
+        left: createBorder(0, 0, 10, 800, "#ff0000"),
+      };
+
+      Object.values(borders).forEach((border) => app.stage.addChild(border));
+
+      // Create circle
+      const circle = new PIXI.Graphics();
+      circle.beginFill("#f5ef42");
+      circle.drawCircle(5, 5, 5);
+      circle.endFill();
+      circle.x = 450;
+      circle.y = 400;
+      let xv = 1;
+      let yv = 1;
+      app.stage.addChild(circle);
+
+      // Track hit borders
+      const hitBorders = new Set();
+
+      // Create Promise for game completion
+      const gameCompletionPromise = new Promise((resolve) => {
+        app.ticker.add(() => {
+          circle.x += xv;
+          circle.y += yv;
+
+          // Check collisions
+          if (circle.x + 5 >= 800 && !hitBorders.has("right")) {
+            xv = -xv;
+            hitBorders.add("right");
+            borders.right.tint = 0x00000;
+          }
+          if (circle.x - 5 <= 0 && !hitBorders.has("left")) {
+            xv = -xv;
+            hitBorders.add("left");
+            borders.left.tint = 0x00000;
+          }
+          if (circle.y + 5 >= 800 && !hitBorders.has("bottom")) {
+            yv = -yv;
+            hitBorders.add("bottom");
+            borders.bottom.tint = 0x00000;
+          }
+          if (circle.y - 5 <= 0 && !hitBorders.has("top")) {
+            yv = -yv;
+            hitBorders.add("top");
+            borders.top.tint = 0x00000;
+          }
+
+          if (hitBorders.size === 4) {
+            resolve();
+          }
+        });
+      });
+
+      gameCompletionPromise.then(() => {
+        alert("Game completed! The circle has hit all four borders!");
+        app.ticker.stop();
+      });
+
+      function createBorder(x, y, width, height, color) {
+        const border = new PIXI.Graphics();
+        border.beginFill(color);
+        border.drawRect(0, 0, width, height);
+        border.endFill();
+        border.x = x;
+        border.y = y;
+        return border;
+      }
+    </script>
+  </body>
+</html>

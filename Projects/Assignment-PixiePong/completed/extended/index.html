@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module 3 | Visual Libraries | PixiJS</title>
+  </head>
+  <body>
+    <game id="game"></game>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type="module">
+      const app = new PIXI.Application();
+      await app.init({
+        backgroundColor: "#3398b9",
+        width: 800,
+        height: 800,
+      });
+      document.getElementById("game").appendChild(app.canvas);
+
+      const borders = {
+        top: createBorder(0, 0, 800, 10, "#ff0000"),
+        right: createBorder(790, 0, 10, 800, "#ff0000"),
+        bottom: createBorder(0, 790, 800, 10, "#ff0000"),
+        left: createBorder(0, 0, 10, 800, "#ff0000"),
+      };
+
+      Object.values(borders).forEach((border) => app.stage.addChild(border));
+
+      const initialVelocity = 2;
+      let circles = [createCircle(450, 400, initialVelocity, initialVelocity)];
+
+      const ballCounter = new PIXI.Text("Balls: 1", {
+        fontFamily: "Arial",
+        fontSize: 24,
+        fill: 0xffffff,
+        align: "right",
+      });
+      ballCounter.x = 700;
+      ballCounter.y = 10;
+      app.stage.addChild(ballCounter);
+
+      const hitBorders = new Set();
+      let evolutionPhase = 0;
+      let lastSplitTime = 0;
+      const splitCooldown = 1000;
+
+      app.ticker.add(() => {
+        const currentTime = Date.now();
+        circles.forEach((circle, index) => {
+          circle.x += circle.xv;
+          circle.y += circle.yv;
+
+          if (circle.x + 5 >= 800) {
+            circle.xv = -Math.abs(circle.xv);
+            hitBorders.add("right");
+            borders.right.tint = 0xffffff;
+            handleCollision(index, currentTime);
+          }
+          if (circle.x - 5 <= 0) {
+            circle.xv = Math.abs(circle.xv);
+            hitBorders.add("left");
+            borders.left.tint = 0xffffff;
+            handleCollision(index, currentTime);
+          }
+          if (circle.y + 5 >= 800) {
+            circle.yv = -Math.abs(circle.yv);
+            hitBorders.add("bottom");
+            borders.bottom.tint = 0xffffff;
+            handleCollision(index, currentTime);
+          }
+          if (circle.y - 5 <= 0) {
+            circle.yv = Math.abs(circle.yv);
+            hitBorders.add("top");
+            borders.top.tint = 0xffffff;
+            handleCollision(index, currentTime);
+          }
+
+          if (hitBorders.size === 4 && evolutionPhase === 0) {
+            evolutionPhase = 1;
+          }
+        });
+
+        ballCounter.text = `Balls: ${circles.length}`;
+      });
+
+      function handleCollision(index, currentTime) {
+        if (evolutionPhase > 0 && currentTime - lastSplitTime > splitCooldown) {
+          splitCircle(index);
+          lastSplitTime = currentTime;
+        }
+      }
+
+      function splitCircle(index) {
+        const originalCircle = circles[index];
+        const newCircle1 = createCircle(
+          originalCircle.x,
+          originalCircle.y,
+          originalCircle.xv,
+          originalCircle.yv
+        );
+        const newCircle2 = createCircle(
+          originalCircle.x,
+          originalCircle.y,
+          -originalCircle.xv,
+          -originalCircle.yv
+        );
+
+        app.stage.removeChild(originalCircle);
+        circles.splice(index, 1);
+
+        circles.push(newCircle1, newCircle2);
+      }
+
+      function createCircle(x, y, xv, yv) {
+        const circle = new PIXI.Graphics();
+        circle.beginFill("#f5ef42");
+        circle.drawCircle(0, 0, 5);
+        circle.endFill();
+        circle.x = x;
+        circle.y = y;
+        circle.xv = xv;
+        circle.yv = yv;
+        app.stage.addChild(circle);
+        return circle;
+      }
+
+      function createBorder(x, y, width, height, color) {
+        const border = new PIXI.Graphics();
+        border.beginFill(color);
+        border.drawRect(0, 0, width, height);
+        border.endFill();
+        border.x = x;
+        border.y = y;
+        return border;
+      }
+    </script>
+  </body>
+</html>

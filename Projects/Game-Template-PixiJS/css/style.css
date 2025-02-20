@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#timer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+#game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: none;
+}
+
+#new-game-btn {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}

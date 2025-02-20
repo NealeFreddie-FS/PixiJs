@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixie Pong</title>
+    <link rel="stylesheet" href="src/css/global.css" />
+  </head>
+  <body>
+    <div id="main-menu" class="menu">
+      <h1>Pixie Pong</h1>
+      <button id="start-game">Start Game</button>
+      <button id="settings">Settings</button>
+      <button id="exit-game">Exit Game</button>
+    </div>
+
+    <!-- Character Select Menu -->
+    <div id="character-select" class="menu hidden">
+      <h2>Select Your Pixie</h2>
+      <div class="character-cards">
+        <div id="character-1" class="character-card">
+          <h3>Sparkle</h3>
+          <p>Speed: 8</p>
+          <p>Stamina: 7</p>
+          <p>Abilities: Fire Burst, Ice Barrier, Wind Gust</p>
+          <span class="lock-icon" style="display: none">🔒</span>
+        </div>
+        <div id="character-2" class="character-card locked">
+          <h3>Glitter</h3>
+          <p>Speed: 10</p>
+          <p>Stamina: 9</p>
+          <p>Abilities: Lightning Strike, Earth Shield, Water Wave</p>
+          <span class="lock-icon">🔒</span>
+        </div>
+        <div id="character-3" class="character-card locked">
+          <h3>Twinkle</h3>
+          <p>Speed: 12</p>
+          <p>Stamina: 11</p>
+          <p>Abilities: Shadow Dash, Light Shield, Meteor Shower</p>
+          <span class="lock-icon">🔒</span>
+        </div>
+      </div>
+      <button id="exit-character-select">Back</button>
+    </div>
+
+    <div id="settings-menu" class="menu hidden">
+      <h2>Settings</h2>
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <br />
+      <button id="back-to-menu">Back</button>
+    </div>
+
+    <!-- Game Container -->
+    <div id="game" class="hidden"></div>
+
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+    <script type="module" src="src/js/utils.js"></script>
+    <script type="module" src="src/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,195 @@
+{
+  "characters": {
+    "playable": {
+      "core": {
+        "tyro": {
+          "name": "Tyro",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/tyro/default.png",
+              "description": "The main protagonist of Record Keeper"
+            },
+            {
+              "name": "Black-Robed Keeper",
+              "sprite_url": "sprites/core/tyro/black_robe.png",
+              "description": "Tyro's alternate costume"
+            },
+            {
+              "name": "Cook Coat",
+              "sprite_url": "sprites/core/tyro/cook.png",
+              "description": "Special event costume"
+            },
+            {
+              "name": "Dragon Quest",
+              "sprite_url": "sprites/core/tyro/dragon_quest.png",
+              "description": "Dragon Quest collaboration costume"
+            },
+            {
+              "name": "Palom Model",
+              "sprite_url": "sprites/core/tyro/palom.png",
+              "description": "Tyro in Palom's appearance"
+            },
+            {
+              "name": "Vivi Model",
+              "sprite_url": "sprites/core/tyro/vivi.png",
+              "description": "Tyro in Vivi's appearance"
+            },
+            {
+              "name": "Warrior of Light Model",
+              "sprite_url": "sprites/core/tyro/wol.png",
+              "description": "Tyro in Warrior of Light's appearance"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        },
+        "shadowsmith": {
+          "name": "Shadowsmith",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/shadowsmith/default.png",
+              "description": "The mysterious Shadowsmith"
+            },
+            {
+              "name": "Sephiroth Model",
+              "sprite_url": "sprites/core/shadowsmith/sephiroth.png",
+              "description": "Shadowsmith in Sephiroth's appearance"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        },
+        "wedge": {
+          "name": "Wedge",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/wedge/default.png",
+              "description": "Core version of Wedge"
+            },
+            {
+              "name": "FFVII Model",
+              "sprite_url": "sprites/core/wedge/ff7.png",
+              "description": "FFVII version of Wedge"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        },
+        "elarra": {
+          "name": "Elarra",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/elarra/default.png",
+              "description": "A mysterious girl from the Record Halls"
+            },
+            {
+              "name": "Apron Appearance",
+              "sprite_url": "sprites/core/elarra/apron.png",
+              "description": "Elarra in an apron outfit"
+            },
+            {
+              "name": "Eiko Model",
+              "sprite_url": "sprites/core/elarra/eiko.png",
+              "description": "Elarra in Eiko's appearance"
+            },
+            {
+              "name": "New Years Kimono",
+              "sprite_url": "sprites/core/elarra/kimono.png",
+              "description": "Elarra in traditional New Year's attire"
+            },
+            {
+              "name": "Porom Model",
+              "sprite_url": "sprites/core/elarra/porom.png",
+              "description": "Elarra in Porom's appearance"
+            },
+            {
+              "name": "Sage Costume from Another World",
+              "sprite_url": "sprites/core/elarra/sage.png",
+              "description": "Elarra in sage attire"
+            },
+            {
+              "name": "Yuna Model",
+              "sprite_url": "sprites/core/elarra/yuna.png",
+              "description": "Elarra in Yuna's appearance"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        },
+        "biggs": {
+          "name": "Biggs",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/biggs/default.png",
+              "description": "Core version of Biggs"
+            },
+            {
+              "name": "FFVII Model",
+              "sprite_url": "sprites/core/biggs/ff7.png",
+              "description": "FFVII version of Biggs"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        },
+        "dr_mog": {
+          "name": "Dr. Mog",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "sprites/core/dr_mog/default.png",
+              "description": "Default Dr. Mog appearance"
+            },
+            {
+              "name": "Barbecue Appearance",
+              "sprite_url": "sprites/core/dr_mog/bbq.png",
+              "description": "Dr. Mog in barbecue attire"
+            },
+            {
+              "name": "Christmas Mage",
+              "sprite_url": "sprites/core/dr_mog/christmas.png",
+              "description": "Dr. Mog in Christmas attire"
+            }
+          ],
+          "game": "Final Fantasy Record Keeper",
+          "role": "Core Character"
+        }
+      },
+      "ff1": {
+        "warrior_of_light": {
+          "name": "Warrior of Light",
+          "variants": [
+            {
+              "name": "Default",
+              "sprite_url": "path/to/sprite",
+              "description": "The hero from the first Final Fantasy"
+            },
+            {
+              "name": "Amethyst Armor",
+              "sprite_url": "path/to/sprite",
+              "description": "Alternative costume"
+            }
+          ],
+          "game": "Final Fantasy I",
+          "role": "Warrior"
+        }
+      }
+    },
+    "bosses": {
+      "ff1": {
+        "chaos": {
+          "name": "Chaos",
+          "sprite_url": "path/to/sprite",
+          "description": "Final boss of Final Fantasy I",
+          "game": "Final Fantasy I",
+          "type": "Final Boss"
+        }
+      }
+    }
+  }
+}

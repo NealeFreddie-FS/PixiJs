@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PIXI POCKET</title>
+    <!-- Load dependencies in correct order -->
+    <script src="../js/pixi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="../css/pixi-pocket.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: var(--pixi-dark);
+        font-family: "Arial", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pixi-pocket">
+      <div class="logo">PIXI POCKET</div>
+      <div class="power-led"></div>
+      <button class="power-button" aria-label="Power"></button>
+      <div class="screen-container off">
+        <div class="screen-decor"></div>
+        <div id="game-canvas">
+          <!-- Create canvas element explicitly -->
+          <canvas id="pixi-canvas"></canvas>
+          <div class="homescreen">
+            <div class="game-card" data-game="rpg">
+              <img data-preview="rpg" alt="RPG Game" />
+              <h3>Final RPG</h3>
+              <p>Classic RPG Adventure</p>
+            </div>
+            <div class="game-card" data-game="platformer">
+              <img data-preview="platformer" alt="Platformer" />
+              <h3>Pixel Jumper</h3>
+              <p>Retro Platformer</p>
+            </div>
+            <!-- Add more game cards as needed -->
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <div class="d-pad"></div>
+        <div class="action-buttons">
+          <div class="action-button"></div>
+          <div class="action-button"></div>
+        </div>
+      </div>
+      <div class="button-labels">BA</div>
+    </div>
+
+    <!-- Initialize game -->
+    <script type="module">
+      // Simple initialization
+      window.addEventListener("load", async () => {
+        try {
+          // Import modules
+          const { default: Homescreen } = await import("../js/homescreen.js");
+          const { PREVIEW_IMAGES } = await import("../js/constants.js");
+
+          // Set preview images
+          document.querySelectorAll("img[data-preview]").forEach((img) => {
+            const previewType = img.dataset.preview;
+            img.src = PREVIEW_IMAGES[previewType];
+          });
+
+          // Initialize homescreen
+          window.homescreen = new Homescreen();
+        } catch (error) {
+          console.error("Failed to initialize game:", error);
+        }
+      });
+    </script>
+  </body>
+</html>

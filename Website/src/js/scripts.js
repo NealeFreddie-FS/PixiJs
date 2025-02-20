@@ -49,3 +49,12 @@ document.addEventListener("click", (e) => {
     navLinks.classList.remove("active");
   }
 });
+
+// Add this code to handle logged-in state
+const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+if (isLoggedIn) {
+  document.querySelectorAll(".logged-in").forEach((element) => {
+    element.style.display = "inline-block";
+  });
+}

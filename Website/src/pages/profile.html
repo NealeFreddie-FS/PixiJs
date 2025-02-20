@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile - PixiJS</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="fyp-navbar">
+      <div class="fyp-nav-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-gamepad"></i> PixiJS Games
+        </a>
+        <div class="fyp-nav-links">
+          <a href="../index.html"><i class="fas fa-home"></i></a>
+          <a href="custom-resources.html"><i class="fas fa-compass"></i></a>
+          <a href="fyp.html"><i class="fas fa-heart"></i></a>
+          <a href="profile.html" class="logged-in"
+            ><i class="fas fa-user"></i
+          ></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile">
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <img
+            src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
+            alt="User Avatar"
+          />
+        </div>
+        <div class="profile-info">
+          <h1>JohnDoe</h1>
+          <p>Game Developer | PixiJS Enthusiast</p>
+          <div class="profile-bio">
+            <p>
+              Passionate about creating immersive 2D games with PixiJS. Check
+              out my projects below!
+            </p>
+          </div>
+          <div class="profile-stats">
+            <div class="stat">
+              <span class="stat-number">12</span>
+              <span class="stat-label">Posts</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">345</span>
+              <span class="stat-label">Followers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">123</span>
+              <span class="stat-label">Following</span>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="edit-profile-btn">
+            Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- About Me Section -->
+      <div class="profile-section">
+        <h2>About Me</h2>
+        <p>
+          I'm a game developer with over 5 years of experience in creating
+          interactive 2D games. I specialize in using PixiJS to build
+          high-performance, visually stunning games. I'm also passionate about
+          teaching and sharing my knowledge with the community.
+        </p>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="profile-section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="fas fa-code"></i>
+            <h3>JavaScript</h3>
+            <p>Expert in modern JavaScript and ES6+ features.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-gamepad"></i>
+            <h3>Game Development</h3>
+            <p>Proficient in 2D game development with PixiJS.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>UI/UX Design</h3>
+            <p>Skilled in creating intuitive and engaging user interfaces.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <div class="profile-section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/163036/mario-luigi-yoschi-figures-163036.jpeg"
+              alt="Space Shooter Game"
+            />
+            <h3>Space Shooter Game</h3>
+            <p>A fast-paced space shooter built with PixiJS.</p>
+            <a href="#" class="btn btn-secondary">View Project</a>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg"
+              alt="Platform Adventure"
+            />
+            <h3>Platform Adventure</h3>
+            <p>An exciting platformer game with unique mechanics.</p>
+            <a href="#" class="btn btn-secondary">View Project</a>
+          </div>
+          <div class="project-card">
+            <img
+              src="https://images.pexels.com/photos/3165338/pexels-photo-3165338.jpeg"
+              alt="Puzzle Challenge"
+            />
+            <h3>Puzzle Challenge</h3>
+            <p>A brain-teasing puzzle game for all ages.</p>
+            <a href="#" class="btn btn-secondary">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Activity Feed Section -->
+      <div class="profile-section">
+        <h2>Activity Feed</h2>
+        <div class="activity-feed">
+          <div class="activity-item">
+            <i class="fas fa-heart"></i>
+            <span>JaneSmith liked your post</span>
+            <span class="activity-time">2 hours ago</span>
+          </div>
+          <div class="activity-item">
+            <i class="fas fa-comment"></i>
+            <span>AlexBrown commented on your game</span>
+            <span class="activity-time">5 hours ago</span>
+          </div>
+          <div class="activity-item">
+            <i class="fas fa-share"></i>
+            <span>Your project was shared by GameDevHub</span>
+            <span class="activity-time">1 day ago</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Social Links Section -->
+      <div class="profile-section">
+        <h2>Connect With Me</h2>
+        <div class="social-links">
+          <a href="#" class="social-link">
+            <i class="fab fa-twitter"></i>
+            <span>Twitter</span>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="#" class="social-link">
+            <i class="fab fa-youtube"></i>
+            <span>YouTube</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="edit-profile-modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Edit Profile</h2>
+        <form id="edit-profile-form">
+          <div class="form-group">
+            <label for="edit-username">Username</label>
+            <input type="text" id="edit-username" value="JohnDoe" required />
+          </div>
+          <div class="form-group">
+            <label for="edit-bio">Bio</label>
+            <textarea id="edit-bio" required>
+Passionate about creating immersive 2D games with PixiJS. Check out my projects below!</textarea
+            >
+          </div>
+          <div class="form-group">
+            <label for="edit-avatar">Upload Avatar</label>
+            <input type="file" id="edit-avatar" accept="image/*" />
+          </div>
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../js/profile.js"></script>
+  </body>
+</html>

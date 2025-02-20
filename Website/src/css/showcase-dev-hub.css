@@ -1,0 +1,56 @@
+/* Showcase Dev Hub Page Styles */
+.showcase-dev-hub {
+  padding: 6rem 2rem;
+  background: white;
+}
+
+.showcase-form {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--light-color);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.showcase-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.showcase-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+  font-weight: 500;
+}
+
+.showcase-form input,
+.showcase-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.showcase-form textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.showcase-form button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.showcase-form button:hover {
+  background: var(--secondary-color);
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Showcase Dev Hub - PixiJS</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/showcase-dev-hub.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-gamepad"></i> PixiJS Games
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="showcase-dev-hub.html">Showcase Hub</a>
+          <a href="community.html">Community</a>
+          <a href="custom-resources.html">Resources</a>
+          <a href="get-started.html" class="btn btn-primary">
+            <i class="fas fa-rocket"></i> Start Building
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="showcase">
+      <h2 class="section-title">Submit Your Project to the Showcase</h2>
+      <div class="showcase-form">
+        <form id="submit-project-form">
+          <div class="form-group">
+            <label for="project-name">Project Name</label>
+            <input type="text" id="project-name" required />
+          </div>
+          <div class="form-group">
+            <label for="project-description">Description</label>
+            <textarea id="project-description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="project-image">Upload Image</label>
+            <input type="file" id="project-image" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="project-link">Project Link</label>
+            <input type="url" id="project-link" required />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Project</button>
+        </form>
+      </div>
+    </section>
+
+    <script src="../js/showcase-dev-hub.js"></script>
+  </body>
+</html>

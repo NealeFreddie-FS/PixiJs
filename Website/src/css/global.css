@@ -133,6 +133,15 @@ p {
   box-shadow: var(--shadow);
 }
 
+/* Add this for logged-in user navigation */
+.nav-links .logged-in {
+  display: none;
+}
+
+.logged-in .nav-links .logged-in {
+  display: inline-block;
+}
+
 /* Mobile Menu */
 .menu-toggle {
   display: none;

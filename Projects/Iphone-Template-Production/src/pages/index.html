@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iPhone Sandbox</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- Base Styles -->
+    <style>
+      /* Critical styles to prevent FOUC */
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #1b1b1b;
+      }
+    </style>
+    <!-- App Styles -->
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/device.css" />
+    <link rel="stylesheet" href="../css/interface.css" />
+    <link rel="stylesheet" href="../css/apps/phone.css" />
+    <link rel="stylesheet" href="../css/apps/messages.css" />
+    <link rel="stylesheet" href="../css/apps/settings.css" />
+  </head>
+  <body>
+    <div class="device-container">
+      <div class="iphone">
+        <!-- Physical Buttons -->
+        <div class="power-button"></div>
+        <div class="volume-up"></div>
+        <div class="volume-down"></div>
+        <div class="silent-switch"></div>
+
+        <div class="screen-container">
+          <!-- Dynamic Island -->
+          <div class="dynamic-island"></div>
+
+          <!-- Status Bar -->
+          <div class="status-bar">
+            <div class="status-bar-left">
+              <span class="time">06:17</span>
+            </div>
+            <div class="status-bar-right">
+              <span class="signal">
+                <i class="fas fa-signal"></i>
+              </span>
+              <span class="wifi">
+                <i class="fas fa-wifi"></i>
+              </span>
+              <span class="battery">
+                <i class="fas fa-battery-full"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Screen Content -->
+          <div class="screen">
+            <!-- Home Screen -->
+            <div class="home-screen">
+              <!-- App Grid -->
+              <div class="app-grid">
+                <!-- Apps will be dynamically loaded here -->
+              </div>
+            </div>
+
+            <!-- App Windows -->
+            <div class="app-windows">
+              <!-- App content will be loaded here -->
+            </div>
+
+            <!-- Dock (moved outside home-screen) -->
+            <div class="dock">
+              <div class="app-icon" data-app="phone">
+                <img
+                  src="https://api.iconify.design/fluent/phone-24-filled.svg?color=%23ffffff"
+                  alt="Phone"
+                />
+              </div>
+              <div class="app-icon" data-app="messages">
+                <img
+                  src="https://api.iconify.design/fluent/chat-24-filled.svg?color=%23ffffff"
+                  alt="Messages"
+                />
+              </div>
+              <div class="app-icon" data-app="settings">
+                <img
+                  src="https://api.iconify.design/fluent/settings-24-filled.svg?color=%23ffffff"
+                  alt="Settings"
+                />
+              </div>
+              <div class="app-icon" data-app="camera">
+                <img
+                  src="https://api.iconify.design/fluent/camera-24-filled.svg?color=%23ffffff"
+                  alt="Camera"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Home Indicator -->
+          <div class="home-indicator"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/core/Device.js" type="module"></script>
+    <script src="../js/core/TouchHandler.js" type="module"></script>
+    <script src="../js/core/AppManager.js" type="module"></script>
+    <script src="../js/apps/Phone.js" type="module"></script>
+    <script src="../js/apps/Messages.js" type="module"></script>
+    <script src="../js/apps/Settings.js" type="module"></script>
+    <script src="../js/main.js" type="module"></script>
+  </body>
+</html>

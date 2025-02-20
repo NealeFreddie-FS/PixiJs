@@ -1,0 +1,865 @@
+:root {
+  --primary-color: #00ff9d;
+  --secondary-color: #00b8ff;
+  --dark-color: #0a192f;
+  --darker-color: #060c17;
+  --light-color: #64ffda;
+  --accent-color: #ff3864;
+  --text-color: #e6f1ff;
+  --grid-color: rgba(100, 255, 218, 0.1);
+  --panel-bg: rgba(10, 25, 47, 0.95);
+  --border-radius: 8px;
+  --neon-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+  --panel-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Share Tech Mono", monospace;
+  background: var(--darker-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+}
+
+.simulation-container {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1800px;
+  width: 98vw;
+  height: 95vh;
+  background: var(--dark-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--panel-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Sci-fi Border Effect */
+.simulation-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  animation: borderPulse 4s infinite;
+  pointer-events: none;
+  box-shadow: var(--neon-shadow);
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: var(--primary-color);
+    opacity: 1;
+  }
+  50% {
+    border-color: var(--secondary-color);
+    opacity: 0.5;
+  }
+  100% {
+    border-color: var(--primary-color);
+    opacity: 1;
+  }
+}
+
+/* Stats Panel */
+.stats-panel {
+  background: var(--panel-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--grid-color);
+  box-shadow: var(--panel-shadow);
+}
+
+.stats-panel h2 {
+  margin: 0;
+  font-size: 1.4em;
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--grid-color);
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Simulation Canvas */
+#simulation-canvas {
+  background: var(--darker-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--grid-color);
+}
+
+/* Control Panel */
+.control-panel {
+  background: var(--panel-bg);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--grid-color);
+  box-shadow: var(--panel-shadow);
+  width: 350px;
+}
+
+.control-panel h2,
+.control-panel h3 {
+  margin: 0;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.control-panel h2 {
+  font-size: 1.4em;
+  border-bottom: 2px solid var(--grid-color);
+  padding-bottom: 15px;
+}
+
+.control-panel h3 {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+/* Buttons */
+button {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Share Tech Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: var(--primary-color);
+  color: var(--darker-color);
+  box-shadow: 0 0 15px var(--primary-color);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Entity Controls */
+.entity-controls {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.entity-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.spawn-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.spawn-controls input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--grid-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 8px;
+  width: 80px;
+  font-family: "Share Tech Mono", monospace;
+}
+
+/* Stats Display */
+.stat-item {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+  border: 1px solid var(--grid-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  color: var(--secondary-color);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* Population Graph */
+.population-graph {
+  height: 200px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  margin-top: 15px;
+  position: relative;
+  border: 1px solid var(--grid-color);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Weather Display */
+.weather-display {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border: 1px solid var(--grid-color);
+}
+
+.weather-icon {
+  font-size: 1.8em;
+  color: var(--secondary-color);
+}
+
+/* Add Font */
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+/* Terrain Properties Panel */
+.terrain-tabs {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--grid-color);
+  padding-bottom: 10px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--grid-color);
+  color: var(--text-color);
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+.tab-btn.active {
+  background: var(--primary-color);
+  color: var(--darker-color);
+  border-color: var(--primary-color);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.property-group {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.property-group h4 {
+  margin: 0 0 15px 0;
+  color: var(--secondary-color);
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.property-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 50px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.property-row label {
+  font-size: 0.9em;
+  color: var(--text-color);
+}
+
+.property-row input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+}
+
+.property-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.property-row input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+.value-display {
+  font-family: monospace;
+  color: var(--primary-color);
+  text-align: right;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Window System */
+.window {
+  position: absolute;
+  background: var(--panel-bg);
+  border: 1px solid var(--grid-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--panel-shadow);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  min-width: 200px;
+  min-height: 100px;
+  z-index: 100;
+}
+
+.window.active {
+  box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+  border-color: var(--primary-color);
+  z-index: 100;
+}
+
+.window-titlebar {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.window-title {
+  color: var(--primary-color);
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-controls button {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 14px;
+  padding: 0;
+}
+
+.window-controls button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.window-content {
+  padding: 15px;
+  height: calc(100% - 37px);
+  overflow-y: auto;
+}
+
+/* Scrollbar styling */
+.window-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+/* Time Properties Window */
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+}
+
+.time-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#time-display {
+  font-size: 2em;
+  font-weight: bold;
+  font-family: "Share Tech Mono", monospace;
+  transition: color 0.5s ease;
+}
+
+#day-period {
+  font-size: 0.9em;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.day-counter {
+  background: var(--primary-color);
+  color: var(--darker-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+input[type="time"] {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--grid-color);
+  border-radius: 4px;
+  color: var(--text-color);
+  padding: 5px;
+  font-family: "Share Tech Mono", monospace;
+  width: 100px;
+}
+
+/* Add these new styles */
+
+.viewport-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex: 1;
+}
+
+.viewport-controls {
+  background: var(--panel-bg);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--grid-color);
+}
+
+.viewport-controls-left,
+.viewport-controls-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.view-btn {
+  background: transparent;
+  border: 1px solid var(--grid-color);
+  color: var(--text-color);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+}
+
+.view-btn.active {
+  background: var(--primary-color);
+  color: var(--darker-color);
+  border-color: var(--primary-color);
+}
+
+.time-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 5px;
+  border-radius: var(--border-radius);
+}
+
+.speed-display {
+  font-family: "Share Tech Mono", monospace;
+  color: var(--primary-color);
+  min-width: 40px;
+  text-align: center;
+}
+
+.control-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.control-group {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-top: 10px;
+}
+
+.speed-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.speed-preset {
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
+
+.entity-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Docking System */
+.dock-indicator {
+  position: fixed;
+  pointer-events: none;
+  background: rgba(0, 255, 157, 0.1);
+  border: 2px solid var(--primary-color);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
+}
+
+.dock-indicator.active {
+  opacity: 1;
+}
+
+.window.docked {
+  transition: all 0.3s ease;
+  border-radius: 0;
+  z-index: 50;
+}
+
+.window.docked .window-titlebar {
+  padding: 4px 8px;
+}
+
+.window.docked-left {
+  border-right: 1px solid var(--grid-color);
+}
+
+.window.docked-right {
+  border-left: 1px solid var(--grid-color);
+}
+
+.window.docked-center {
+  border-left: 1px solid var(--grid-color);
+  border-right: 1px solid var(--grid-color);
+}
+
+/* Window specific styles */
+.window[data-id="viewport"] {
+  min-width: 600px;
+  min-height: 400px;
+}
+
+.window[data-id="viewport"] .window-content {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--darker-color);
+}
+
+.viewport-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  background: var(--darker-color);
+  width: 100%;
+  height: 100%;
+}
+
+.viewport-content canvas {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.viewport-controls {
+  padding: 10px;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--grid-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  flex-shrink: 0;
+}
+
+.window[data-id="stats"] .stats-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.window[data-id="controls"] .control-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Tab system for docked windows */
+.docked-tabs {
+  display: flex;
+  background: var(--panel-bg);
+  border-bottom: 1px solid var(--grid-color);
+}
+
+.docked-tab {
+  padding: 8px 15px;
+  color: var(--text-color);
+  cursor: pointer;
+  border-right: 1px solid var(--grid-color);
+}
+
+.docked-tab.active {
+  background: var(--primary-color);
+  color: var(--darker-color);
+}
+
+.layout-reset-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  background: var(--primary-color);
+  color: var(--darker-color);
+  border: none;
+  padding: 8px 15px;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9em;
+  box-shadow: var(--panel-shadow);
+}
+
+.layout-reset-btn:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.layout-reset-btn i {
+  font-size: 1.1em;
+}
+
+/* Resize Handles */
+.resize-handle {
+  position: absolute;
+  background: transparent;
+  z-index: 10;
+}
+
+.resize-n {
+  top: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  cursor: n-resize;
+}
+
+.resize-e {
+  top: 0;
+  right: -5px;
+  bottom: 0;
+  width: 10px;
+  cursor: e-resize;
+}
+
+.resize-s {
+  bottom: -5px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  cursor: s-resize;
+}
+
+.resize-w {
+  top: 0;
+  left: -5px;
+  bottom: 0;
+  width: 10px;
+  cursor: w-resize;
+}
+
+.resize-ne {
+  top: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  cursor: ne-resize;
+}
+
+.resize-se {
+  bottom: -5px;
+  right: -5px;
+  width: 10px;
+  height: 10px;
+  cursor: se-resize;
+}
+
+.resize-sw {
+  bottom: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  cursor: sw-resize;
+}
+
+.resize-nw {
+  top: -5px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  cursor: nw-resize;
+}
+
+.window.docked .resize-handle {
+  display: none;
+}
+
+/* Project Panel */
+.project-panel {
+  width: 100vw;
+  height: 100vh;
+  background: var(--darker-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-panel canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Update window styles for the new layout */
+.window {
+  background: var(--panel-bg);
+  border: 1px solid var(--grid-color);
+  box-shadow: var(--panel-shadow);
+}
+
+.window[data-id="stats"] {
+  min-width: 250px;
+  min-height: 300px;
+}
+
+.window[data-id="controls"] {
+  min-width: 300px;
+  min-height: 400px;
+}
+
+.window[data-id="time-properties"] {
+  min-width: 300px;
+  min-height: 350px;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--panel-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.2em;
+  color: var(--text-color);
+}
+
+.loading-overlay i {
+  font-size: 2em;
+  color: var(--primary-color);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fa-spin {
+  animation: spin 1s linear infinite;
+}

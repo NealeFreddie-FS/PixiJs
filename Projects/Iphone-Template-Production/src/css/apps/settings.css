@@ -1,0 +1,220 @@
+.settings-app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f2f2f7;
+}
+
+.app-header {
+  background: #fff;
+  padding: 15px;
+  border-bottom: 1px solid #e5e5ea;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.app-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #007aff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.settings-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.settings-group {
+  margin: 35px 0;
+  background: #fff;
+  border-top: 1px solid #e5e5ea;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.settings-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.settings-icon.wifi {
+  background: #007aff;
+}
+
+.settings-icon.bluetooth {
+  background: #5856d6;
+}
+
+.settings-icon.display {
+  background: #5856d6;
+}
+
+.settings-icon.sounds {
+  background: #ff2d55;
+}
+
+.settings-info {
+  flex: 1;
+}
+
+.settings-label {
+  font-size: 17px;
+  color: #000;
+}
+
+.settings-value {
+  font-size: 15px;
+  color: #8e8e93;
+}
+
+.settings-item i.fa-chevron-right {
+  color: #c7c7cc;
+  font-size: 14px;
+}
+
+/* Toggle Switch */
+.toggle-setting {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e5e5ea;
+  transition: 0.4s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #34c759;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* WiFi Section */
+.section-header {
+  padding: 10px 15px;
+  color: #6d6d72;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.network-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.network-info {
+  flex: 1;
+}
+
+.network-name {
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.network-name i {
+  color: #8e8e93;
+  font-size: 14px;
+}
+
+.network-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.wifi-strength {
+  display: flex;
+  gap: 2px;
+}
+
+.wifi-bar {
+  width: 3px;
+  height: 6px;
+  background: #e5e5ea;
+  border-radius: 1px;
+}
+
+.wifi-bar.active {
+  background: #8e8e93;
+}
+
+.connected {
+  color: #8e8e93;
+  font-size: 14px;
+}
+
+.network-item i.fa-check {
+  color: #007aff;
+}

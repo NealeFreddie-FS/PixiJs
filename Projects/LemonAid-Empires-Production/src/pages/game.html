@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LemonAid Empires - Game</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.0.0/pixi.min.js"></script>
+    <script type="module" src="../js/main.js"></script>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="game-ui">
+        <div id="stats">
+          <h2>LemonAid Empires</h2>
+          <p>
+            Stand Name:
+            <span id="stand-name">${localStorage.getItem("standName")}</span>
+          </p>
+          <p>
+            Location:
+            <span id="location">${localStorage.getItem("location")}</span>
+          </p>
+          <p>
+            Difficulty:
+            <span id="difficulty">${localStorage.getItem("difficulty")}</span>
+          </p>
+          <p>
+            Level:
+            <span id="level">${localStorage.getItem("selectedLevel")}</span>
+          </p>
+          <p>Day: <span id="day">1</span></p>
+          <p>Money: $<span id="money">50.00</span></p>
+          <p>Lemonade: <span id="lemonade">0</span> cups</p>
+        </div>
+        <div id="controls">
+          <button id="buy-lemons">Buy Lemons ($1.00)</button>
+          <button id="buy-sugar">Buy Sugar ($0.50)</button>
+          <button id="buy-ice">Buy Ice ($0.25)</button>
+          <button id="make-lemonade">Make Lemonade</button>
+          <button id="sell-lemonade">Sell Lemonade ($1.00)</button>
+          <button id="next-day">Next Day</button>
+        </div>
+        <div id="weather">
+          <p>Weather: <span id="weather-condition">Sunny</span></p>
+          <p>Temperature: <span id="temperature">75</span>°F</p>
+        </div>
+      </div>
+      <canvas id="game-canvas"></canvas>
+    </div>
+  </body>
+</html>

@@ -1,1 +1,109 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile - PixiJS</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/edit-profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="fyp-navbar">
+      <div class="fyp-nav-content">
+        <a href="../index.html" class="logo">
+          <i class="fas fa-gamepad"></i> PixiJS Games
+        </a>
+        <div class="fyp-nav-links">
+          <a href="../index.html"><i class="fas fa-home"></i></a>
+          <a href="custom-resources.html"><i class="fas fa-compass"></i></a>
+          <a href="fyp.html"><i class="fas fa-heart"></i></a>
+          <a href="profile.html" class="logged-in"
+            ><i class="fas fa-user"></i
+          ></a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Edit Profile Section -->
+    <section class="edit-profile">
+      <h1>Edit Profile</h1>
+      <form id="edit-profile-form">
+        <!-- Username -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+
+        <!-- Bio -->
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea
+            id="bio"
+            placeholder="Tell us about yourself"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Avatar -->
+        <div class="form-group">
+          <label for="avatar">Upload Avatar</label>
+          <input type="file" id="avatar" accept="image/*" />
+          <div class="avatar-preview" id="avatar-preview"></div>
+        </div>
+
+        <!-- Skills -->
+        <div class="form-group">
+          <label for="skills">Skills</label>
+          <div class="skills-input">
+            <input
+              type="text"
+              id="skill-input"
+              placeholder="Add a skill (e.g., JavaScript)"
+            />
+            <button type="button" id="add-skill" class="btn btn-secondary">
+              Add Skill
+            </button>
+          </div>
+          <div class="skills-list" id="skills-list"></div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="form-group">
+          <label for="social-links">Social Links</label>
+          <div class="social-links-input">
+            <select id="social-platform">
+              <option value="twitter">Twitter</option>
+              <option value="github">GitHub</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="youtube">YouTube</option>
+            </select>
+            <input
+              type="url"
+              id="social-url"
+              placeholder="Enter your profile URL"
+            />
+            <button type="button" id="add-social" class="btn btn-secondary">
+              Add Link
+            </button>
+          </div>
+          <div class="social-links-list" id="social-links-list"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Save Profile</button>
+      </form>
+    </section>
+
+    <script src="../js/edit-profile.js"></script>
+  </body>
+</html>

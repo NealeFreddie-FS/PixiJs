@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LemonAid Empires - Level Select</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div id="level-select-container">
+      <div class="level-select-header">
+        <h1>Select a Level</h1>
+        <p>Choose where to start your lemonade empire!</p>
+      </div>
+      <div class="level-grid">
+        <div class="level-card" data-level="1">
+          <h3>Level 1: Park</h3>
+          <p>Start small in the local park.</p>
+          <button class="btn btn-primary" onclick="startLevel(1)">
+            <i class="fas fa-play"></i>
+            Play
+          </button>
+        </div>
+        <div class="level-card" data-level="2">
+          <h3>Level 2: Beach</h3>
+          <p>Expand to the sunny beach.</p>
+          <button class="btn btn-primary" onclick="startLevel(2)">
+            <i class="fas fa-play"></i>
+            Play
+          </button>
+        </div>
+        <div class="level-card" data-level="3">
+          <h3>Level 3: City Center</h3>
+          <p>Conquer the bustling city center.</p>
+          <button class="btn btn-primary" onclick="startLevel(3)">
+            <i class="fas fa-play"></i>
+            Play
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Start Level Function
+      function startLevel(level) {
+        localStorage.setItem("selectedLevel", level);
+        window.location.href = "./game.html";
+      }
+    </script>
+  </body>
+</html>

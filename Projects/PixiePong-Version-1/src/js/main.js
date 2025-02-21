@@ -1,57 +1,142 @@
 import { showMenu, hideMenu, exitGame } from "./utils.js";
-import Menu from "./components/Menu.js";
-import Settings from "./components/Settings.js";
 import Game from "./components/Game.js";
+import Menu from "./components/Menu.js";
+import CharacterSelect from "./components/CharacterSelect.js";
+import SoundManager from "./components/SoundManager.js";
 
-// Initialize PixiJS Application
-let app; // Declare app globally
+// Initialize game state
+let game = null;
+let app = null;
+let currentCharacter = null;
+let soundManager = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+// Wait for DOM to be loaded
+document.addEventListener("DOMContentLoaded", async () => {
+  // Initialize PIXI Application
+  app = new PIXI.Application({
+    width: 800,
+    height: 600,
+    backgroundColor: 0x000000,
+    resolution: window.devicePixelRatio || 1,
+    antialias: true,
+  });
+
+  // Initialize and wait for sound manager
+  soundManager = new SoundManager();
+  await soundManager.init();
+
+  // Add event listeners
+  setupEventListeners();
+});
+
+function setupEventListeners() {
   const startButton = document.getElementById("start-game");
   const settingsButton = document.getElementById("settings");
   const exitButton = document.getElementById("exit-game");
   const backButton = document.getElementById("back-to-menu");
+  const exitCharacterSelect = document.getElementById("exit-character-select");
 
-  startButton.addEventListener("click", startGame);
-  settingsButton.addEventListener("click", () => showMenu("settings-menu"));
-  backButton.addEventListener("click", () => showMenu("main-menu"));
-  exitButton.addEventListener("click", exitGame);
-});
+  // Add a click handler to the document for the first interaction
+  const unlockAudio = async () => {
+    await soundManager.unlockAudio();
+    // Start menu music after first click
+    await soundManager.playMenuMusic();
+    document.removeEventListener("click", unlockAudio);
+  };
+  document.addEventListener("click", unlockAudio);
 
-function startGame() {
-  hideMenu("main-menu");
-  document.getElementById("game").classList.remove("hidden");
-  initializeGame();
-}
-
-function initializeGame() {
-  // Create PixiJS Application if it doesn't exist
-  if (!app) {
-    app = new PIXI.Application({
-      backgroundColor: 0x3398b9,
-      width: 800,
-      height: 800,
-      antialias: true,
+  // Add hover sounds to all buttons
+  document.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("mouseenter", async () => {
+      await soundManager.playHover();
     });
-    document.getElementById("game").appendChild(app.view);
-  }
-
-  // Initialize Components
-  const menu = new Menu();
-  const settings = new Settings();
-  const game = new Game(app);
-
-  // Listen for game start to initialize game components
-  document.addEventListener("startGame", () => {
-    // Set default difficulty
-    const selectedDifficulty = document.getElementById("difficulty").value;
-    game.setDifficulty(selectedDifficulty);
   });
 
-  // Listen for game reset to reset game components
-  document.addEventListener("resetGame", () => {
+  startButton.addEventListener("click", async () => {
+    await soundManager.playClick();
+    hideMenu("main-menu");
+    showMenu("character-select");
+  });
+
+  settingsButton.addEventListener("click", async () => {
+    await soundManager.playClick();
+    hideMenu("main-menu");
+    showMenu("settings-menu");
+  });
+
+  backButton.addEventListener("click", async () => {
+    await soundManager.playBack();
+    hideMenu("settings-menu");
     showMenu("main-menu");
-    document.getElementById("game").classList.add("hidden");
-    game.resetGame();
+  });
+
+  exitButton.addEventListener("click", async () => {
+    await soundManager.playClick();
+    exitGame();
+  });
+
+  exitCharacterSelect.addEventListener("click", () => {
+    soundManager.playBack();
+    hideMenu("character-select");
+    showMenu("main-menu");
+  });
+
+  // Character selection
+  const characters = document.querySelectorAll(".character-card:not(.locked)");
+  characters.forEach((character) => {
+    character.addEventListener("mouseenter", () => {
+      soundManager.playHover();
+    });
+    character.addEventListener("click", () => {
+      soundManager.playClick();
+      selectCharacter(character.id);
+    });
+  });
+
+  // Volume controls
+  const masterVolume = document.getElementById("master-volume");
+  const musicVolume = document.getElementById("music-volume");
+  const sfxVolume = document.getElementById("sfx-volume");
+
+  masterVolume.addEventListener("input", (e) => {
+    soundManager.setMasterVolume(e.target.value / 100);
+  });
+
+  musicVolume.addEventListener("input", (e) => {
+    soundManager.setMusicVolume(e.target.value / 100);
+  });
+
+  sfxVolume.addEventListener("input", (e) => {
+    soundManager.setSFXVolume(e.target.value / 100);
   });
 }
+
+function selectCharacter(characterId) {
+  currentCharacter = characterId;
+  hideMenu("character-select");
+  startGame();
+}
+
+async function startGame() {
+  const gameContainer = document.getElementById("game");
+  gameContainer.classList.remove("hidden");
+  gameContainer.innerHTML = "";
+
+  gameContainer.appendChild(app.view);
+
+  game = new Game(app, currentCharacter, soundManager);
+  await game.start();
+}
+
+// Handle window resize
+window.addEventListener("resize", () => {
+  if (app) {
+    // Update renderer size
+    app.renderer.resize(800, 600);
+
+    // Update game if it exists
+    if (game) {
+      game.handleResize();
+    }
+  }
+});
